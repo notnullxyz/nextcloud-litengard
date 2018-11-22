@@ -22,5 +22,7 @@ Personally, our setup is:
 
 Thanks to Hannes van der Westhuyzen for his DevOps magic and Docker knowledge from the warfront.
 
+22/11/2018: Added namshi's smtp container. Set up your nextcloud to send mail through server address `mailerthing` on port 25
+
 Use at your own risk.
 Marlon
