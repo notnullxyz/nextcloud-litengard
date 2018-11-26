@@ -20,6 +20,14 @@ Personally, our setup is:
 - Nightly (or more often) rsync backups of /opt/xyz for protection of cloud storage data
 - Happiness
 
+Large Uploads Hanging? (uncaught HTTP 413 causes this)
+
+If you notice that uploads larger than 1M is not working, then assume that the proxy client max body size is set to the default 1M. This can be remedied by modifying `/etc/nginx/nginx.conf` in the proxy container:
+- docker exec -it nextcloud-proxy bash
+- vi /etc/nginx/nginx.conf
+- add `client_max_body_size 0;` inside the http {}
+- exit the container, and restart it `docker restart nextcloud-proxy`
+
 Thanks to Hannes van der Westhuyzen for his DevOps magic and Docker knowledge from the warfront.
 
 22/11/2018: Added namshi's smtp container. Set up your nextcloud to send mail through server address `mailerthing` on port 25
